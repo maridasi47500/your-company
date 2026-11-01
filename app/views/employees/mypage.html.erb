@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<div style="width:100%;">
+  <div id="left">
+    <h1>
+      <%=@employee.fullname%>
+    </h1>
+    <img src="/<%=@employee.pic%>"/>
+  </div>
+  <div id="right">
+  </div>
+</div>
+<% content_for :title, "Employee" %>
+
+
+<%= link_to "New employee", new_employee_path %>
