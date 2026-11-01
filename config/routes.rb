@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :employees do
     member do
-      get "pagelikeafriendcansee"
-      get "pagelikeinfoisprivate"
-      get "pageasloggedin"
+      get "mypagelikeafriendcansee"
+      get "mypagelikeinfoisprivate"
+      get "mypageasloggedin"
       get "mypage"
     end
   end

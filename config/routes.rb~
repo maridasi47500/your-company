@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get "pagelikeafriendcansee"
       get "pagelikeinfoisprivate"
       get "pageasloggedin"
+      get "mypage"
     end
   end
   get "home/hello"
