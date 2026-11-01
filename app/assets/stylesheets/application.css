@@ -8,12 +8,15 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-
+#container {
+width:100%;
+min-height:300px;
+}
 #left{
-width: 40%;
+width: 30%;
 float:left;
 display:inline;}
-#left{
-width: 59%;
+#right{
+width: 69%;
 float:left;
 display:inline;}

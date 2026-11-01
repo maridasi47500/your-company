@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[ show edit update destroy mypage mypagelikeafriendcansee mypageasloggedin mypagelikeinfoisprivate]
 
-  def mypagelifeafriendcansee
+  def mypagelikeafriendcansee
   end
   def mypage
   end

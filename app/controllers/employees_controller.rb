@@ -2,12 +2,15 @@ class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[ show edit update destroy mypage mypagelikeafriendcansee mypageasloggedin mypagelikeinfoisprivate]
 
   def mypagelikeafriendcansee
+    render :mypage
   end
   def mypage
   end
   def mypagelikeinfoisprivate
+    render :mypage
   end
   def mypageasloggedin
+    render :mypage
   end
   # GET /employees or /employees.json
   def index

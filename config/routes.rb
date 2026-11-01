@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :emails
   resources :employees do
     member do
       get "mypagelikeafriendcansee"

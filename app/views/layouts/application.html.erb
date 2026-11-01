@@ -24,7 +24,10 @@
   </head>
 
   <body>
+    <nav>
     <%=link_to "all employees", employees_path%>
+    | <%=link_to "all emails", emails_path%>
+    </nav>
     <%= yield %>
   </body>
 </html>

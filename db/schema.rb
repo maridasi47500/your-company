@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_01_023759) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_01_180228) do
+  create_table "emails", force: :cascade do |t|
+    t.string "from"
+    t.string "to"
+    t.string "subject"
+    t.text "content"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employeefriends", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_employeefriends_on_employee_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "fullname"
     t.string "email"
@@ -24,4 +42,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_01_023759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "employeefriends", "employees"
 end

@@ -1,2 +1,9 @@
 class Employee < ApplicationRecord
+  def friends
+    myids=(Employeefriend.where(employee: self).to_a + Employeefriend.where(friend_id:[self.id]).to_a).map{|h|h.friend_id==self.id ? h.employee_id : h.friend_id}
+    p Employeefriend.all
+    p myids
+    Employee.where(id: myids)
+
+  end
 end

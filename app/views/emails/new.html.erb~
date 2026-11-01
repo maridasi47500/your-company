@@ -1,0 +1,33 @@
+<% content_for :title, "New email" %>
+
+<h1>New email</h1>
+<div id="container">
+  <div id="left">
+    <p>
+    inbox
+    </p>
+    <p>
+    starred
+    </p>
+    <p>
+    snoozed
+    </p>
+    <p>
+    sent
+    </p>
+    <p>
+    drafts
+    </p>
+  </div>
+  <div>
+
+
+<%= render "form", email: @email %>
+  </div>
+  </div>
+
+<br>
+
+<div>
+  <%= link_to "Back to emails", emails_path %>
+</div>

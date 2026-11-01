@@ -1,15 +1,27 @@
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+# The data can then be loaded with the bin/rails db:seed command (or find_or_create_byd alongside the database with db:setup).
 #
 # Example:
 #
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
+#     MovieGenre.find_or_find_or_create_by_by!(name: genre_name)
 #   end
-Employee.create(dob: "27/08/92", gender: "f", fullname: "josie jacobs", city: "London", company: "YourCompany", pic: "josie.jpg")
-Employee.create(dob: "26/01/91", gender: "m", fullname: "rob king", city: "London", company: "YourCompany", pic: "rob")
-Employee.create(dob: "26/01/90", gender: "m", fullname: "liam kening", city: "London", company: "YourCompany", pic: "liam")
-Employee.create(dob: "26/01/90", gender: "f", fullname: "pam cooke", city: "London", company: "YourCompany", pic: "liam")
-Employee.create(dob: "26/01/90", gender: "m", fullname: "ciberto", city: "London", company: "YourCompany", pic: "cyberto.jpg")
-Employee.create(dob: "22/11/91", gender: "m", fullname: "teddy winward", city: "London", company: "YourCompany", pic: "cyberto.jpg")
+f=Employee.find_or_create_by(dob: "27/08/92", gender: "f", fullname: "josie jacobs", city: "London", company: "YourCompany", pic: "josie.jpg")
+f1=Employee.find_or_create_by(dob: "26/01/91", gender: "m", fullname: "rob king", city: "London", company: "YourCompany", pic: "rob.jpg")
+f2=Employee.find_or_create_by(dob: "26/01/90", gender: "m", fullname: "liam kening", city: "London", company: "YourCompany", pic: "liam.jpg")
+f3=Employee.find_or_create_by(dob: "26/01/90", gender: "f", fullname: "pam cooke", city: "London", company: "YourCompany", pic: "pam.jpg")
+c=Employee.find_or_create_by(dob: "26/01/90", gender: "m", fullname: "ciberto", city: "London", company: "YourCompany", pic: "cyberto.jpg")
+f4=Employee.find_or_create_by(dob: "22/11/91", gender: "m", fullname: "teddy winward", city: "London", company: "YourCompany", pic: "teddywinward.jpg")
+p "hey"
+
+ww=[f,f1,f2,f3,f4].map{|g|g.id}
+p ww
+p ww.combination(2).to_a 
+ww.combination(2).to_a.each do |f,g|
+  p "o"
+  p f
+  p g
+  Employeefriend.find_or_create_by(employee: g, friend_id: f)
+end
+

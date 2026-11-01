@@ -6,8 +6,34 @@
       <%=@employee.fullname%>
     </h1>
     <img src="/<%=@employee.pic%>"/>
+    <p>
+      <b>Date of birth</b>
+      <%=params[:action] == "mypagelikeinfoisprivate" ? "&#128274; private".html_safe : @employee.dob%>
+    </p>
+    <p>
+      <b>works at</b>
+      <%=params[:action] == "mypagelikeinfoisprivate" ? "&#128274; private".html_safe : @employee.company%>
+    </p>
+    <p>
+      <b>lives in</b>
+      <%=params[:action] == "mypagelikeinfoisprivate" ? "&#128274; private".html_safe : @employee.city%>
+    </p>
+    <div>
+      <b>friends (<%=@employee.friends.length%>)</b>
+      <%@employee.friends.each do |h|%>
+        <img src="/<%=h.pic%>" width="100" height="200" />
+      <%end%>
+    </div>
   </div>
   <div id="right">
+    <p> posts |  likes | comments</p>
+    <%if params[:action] == "mypageasloggedin"%>
+    <%elsif params[:action] == "mypagelikeinfoisprivate"%>
+      <p>
+      <%="&#128274; private".html_safe %>
+      </p>
+    <%else%>
+    <%end%>
   </div>
 </div>
 <% content_for :title, "Employee" %>
