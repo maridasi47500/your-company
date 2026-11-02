@@ -1,0 +1,11 @@
+<% content_for :title, "New friendrequest" %>
+
+<h1>New friend request for <%=@employee.fullname%> <img src="/<%=@employee.pic%>" width=30 height=30 /></h1>
+
+<%= render "form", friendrequest: @friendrequest %>
+
+<br>
+
+<div>
+  <%= link_to "Back to friendrequests", friendrequests_path %>
+</div>

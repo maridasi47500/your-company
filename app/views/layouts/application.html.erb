@@ -26,8 +26,15 @@
   <body>
     <nav>
     <%=link_to "all employees", employees_path%>
+
     | <%=link_to "all emails", emails_path%>
+    | <%=link_to "welcome", root_path%>
+  | <%=form_with method: :get, url: search_simple_path do |f|%>
+  <%=f.search_field :s%>
+  <%=f.submit "simple search"%>
+<%end%>
     </nav>
     <%= yield %>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
   </body>
 </html>

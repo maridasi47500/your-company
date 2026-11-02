@@ -1,0 +1,16 @@
+class SearchController < ApplicationController
+  def simple
+    s=params[:s]
+    @results=[]
+    y=Employee.where("lower(fullname) like ?", ["%#{s.downcase.gsub(" ","%")}%"])
+    y.each do |x|
+      @results.append({"title": "#{x.fullname} - UBook", "description": "personal profile page of #{x.fullname} on UBook", "url": mypagelikeinfoisprivate_employee_path(x)})
+      @results.append({"title": "#{x.fullname} - Twitgram", "description": "personal photos page of #{x.fullname} on Twitgram", "url": mypage_employee_path(x)})
+    end
+    if y.length > 0
+      @results.append({"title": "liste des employés", "description": "liste des employés à YourCompany", "url": employees_path})
+    end
+
+
+  end
+end

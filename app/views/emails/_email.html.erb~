@@ -1,0 +1,30 @@
+<div id="<%= dom_id email %>">
+  <div>
+    <strong>From:</strong>
+    <%= email.from %>
+  </div>
+
+  <div>
+    <strong>To:</strong>
+    <%= email.to %>
+  </div>
+
+  <div>
+    <strong>Subject:</strong>
+    <%= email.subject %>
+  </div>
+
+  <div>
+    <%if email.attachment.to_s.length > 0 %>
+      <img src="/uploads/<%= email.attachment %>" style="max-height:300px;"/>
+  <% end %>
+    <hr>
+    <%= simple_format(email.content) %>
+  </div>
+
+  <div>
+    <strong>&#128206; Attachment:</strong>
+    <%= email.attachment %>
+  </div>
+
+</div>

@@ -1,0 +1,6 @@
+<h1>Search "<%=params[:s]%>"</h1>
+<%@results.each do |x|%>
+  <h3><%=link_to x[:title], x[:url]%></h3>
+  <p><%=x[:description]%></p>
+
+<%end%>

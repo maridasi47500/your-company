@@ -8,6 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+.email-field input{
+width:100%;
+}
 #container {
 width:100%;
 min-height:300px;

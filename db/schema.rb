@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_01_180228) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_02_022832) do
+  create_table "blindcarboncopies", force: :cascade do |t|
+    t.integer "email_id", null: false
+    t.integer "employee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_id"], name: "index_blindcarboncopies_on_email_id"
+    t.index ["employee_id"], name: "index_blindcarboncopies_on_employee_id"
+  end
+
+  create_table "carboncopies", force: :cascade do |t|
+    t.integer "email_id", null: false
+    t.integer "employee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_id"], name: "index_carboncopies_on_email_id"
+    t.index ["employee_id"], name: "index_carboncopies_on_employee_id"
+  end
+
   create_table "emails", force: :cascade do |t|
     t.string "from"
     t.string "to"
@@ -43,5 +61,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_01_180228) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "friendrequests", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_friendrequests_on_employee_id"
+  end
+
+  add_foreign_key "blindcarboncopies", "emails"
+  add_foreign_key "blindcarboncopies", "employees"
+  add_foreign_key "carboncopies", "emails"
+  add_foreign_key "carboncopies", "employees"
   add_foreign_key "employeefriends", "employees"
+  add_foreign_key "friendrequests", "employees"
 end

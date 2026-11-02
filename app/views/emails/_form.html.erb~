@@ -1,0 +1,59 @@
+<%= form_with(model: email) do |form| %>
+  <% if email.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(email.errors.count, "error") %> prohibited this email from being saved:</h2>
+
+      <ul>
+        <% email.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="email-field">
+    <%= form.label :from, style: "display: block" %>
+    <%= form.text_field :from %>
+  </div>
+
+  <div class="email-field">
+    <%= form.label :to, style: "display: block" %>
+    <%= form.text_field :to %>
+  </div>
+
+  <div class="email-field">
+    <%= form.label :subject, style: "display: block" %>
+    <%= form.text_field :subject %>
+  </div>
+
+  <div class="email-field">
+    <%= form.label :content, style: "display: block" %>
+    <%= form.textarea :content %>
+    
+  </div>
+  <%if params[:cc]=="true" or email.ccemployees.length > 0%>
+  <div class="email-field">
+    <%= form.label(:ccemployee_ids, "copie carbone (attention cyberto peut être dans les destinataires)") %>
+    <%= form.collection_check_boxes(:ccemployee_ids, Employee.all, :id, :fullname) do |b| %>
+  <%= b.label(class: "label-checkbox") { b.check_box + b.text } %>
+<% end %>
+  </div>
+<%end%>
+  <%if params[:bcc]=="true"or email.bccemployees.length > 0%>
+  <div class="email-field">
+    <%= form.label(:bccemployee_ids, "copie carbone invisible") %>
+    <%= form.collection_check_boxes(:bccemployee_ids, Employee.all.where.not(fullname: "cyberto"), :id, :fullname) do |b| %>
+  <%= b.label(class: "label-checkbox") { b.check_box + b.text } %>
+<% end %>
+  </div>
+<%end%>
+
+  <div class="email-field">
+    <%= form.label :attachment, style: "display: block" %>
+    <%= form.file_field :attachment %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

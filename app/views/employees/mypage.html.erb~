@@ -28,6 +28,15 @@
   <div id="right">
     <p> posts |  likes | comments</p>
     <%if params[:action] == "mypageasloggedin"%>
+    <%elsif params[:action] == "mypagelikeinfoisprivate"%>
+      <p>
+      <%="&#128274; private".html_safe %>
+      </p>
+      <p>do you know <%=@employee.fullname%> ? , add <%=@employee.gender == "f" ? "her" : "him"%> as a friend to  <%=@employee.gender == "f" ? "her" : "his"%> see info and posts.</p>
+
+
+      <p>
+      send <%=@employee.fullname%> a friend request</p>
     <%else%>
     <%end%>
   </div>

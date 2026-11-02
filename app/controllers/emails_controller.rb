@@ -17,6 +17,12 @@ class EmailsController < ApplicationController
 
   # GET /emails/1/edit
   def edit
+    if params[:bcc]=="true"
+      @email.bccemployee_ids=Employee.all.ids
+    end
+    if params[:cc]=="true"
+      @email.ccemployee_ids=Employee.all.ids
+    end
   end
 
   # POST /emails or /emails.json
@@ -65,6 +71,6 @@ class EmailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def email_params
-      params.expect(email: [ :from, :to, :subject, :content, :attachment ])
+      params.expect(email: [ :from, :to, :subject, :content, :attachment, :ccemployee_ids =>[], :bccemployee_ids=>[] ])
     end
 end

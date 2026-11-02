@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
+  resources :friendrequests
+  get "search/simple"
+  resources :emails
   resources :employees do
+
+
     member do
-      get "pagelikeafriendcansee"
-      get "pagelikeinfoisprivate"
-      get "pageasloggedin"
+      resource :friendrequests do
+        member do
+          get 'youare/:employee_id'
+        end
+      end
+
+      get "mypagelikeafriendcansee"
+      get "mypagelikeinfoisprivate"
+      get "mypageasloggedin"
       get "mypage"
     end
   end

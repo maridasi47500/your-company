@@ -11,29 +11,46 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="email-field">
     <%= form.label :from, style: "display: block" %>
     <%= form.text_field :from %>
   </div>
 
-  <div>
+  <div class="email-field">
     <%= form.label :to, style: "display: block" %>
     <%= form.text_field :to %>
   </div>
 
-  <div>
+  <div class="email-field">
     <%= form.label :subject, style: "display: block" %>
     <%= form.text_field :subject %>
   </div>
 
-  <div>
+  <div class="email-field">
     <%= form.label :content, style: "display: block" %>
     <%= form.textarea :content %>
+    
   </div>
+  <%if params[:cc]=="true" or email.ccemployees.length > 0%>
+  <div class="email-field">
+    <%= form.label(:ccemployee_ids, "copie carbone (attention cyberto peut être dans les destinataires)") %>
+    <%= form.collection_check_boxes(:ccemployee_ids, Employee.all, :id, :fullname) do |b| %>
+  <%= b.label(class: "label-checkbox") { b.check_box + b.text } %>
+<% end %>
+  </div>
+<%end%>
+  <%if params[:bcc]=="true" or email.bccemployees.length > 0%>
+  <div class="email-field">
+    <%= form.label(:bccemployee_ids, "copie carbone invisible") %>
+    <%= form.collection_check_boxes(:bccemployee_ids, Employee.all.where.not(fullname: "cyberto"), :id, :fullname) do |b| %>
+  <%= b.label(class: "label-checkbox") { b.check_box + b.text } %>
+<% end %>
+  </div>
+<%end%>
 
-  <div>
+  <div class="email-field">
     <%= form.label :attachment, style: "display: block" %>
-    <%= form.text_field :attachment %>
+    <%= form.file_field :attachment %>
   </div>
 
   <div>

@@ -32,6 +32,11 @@
       <p>
       <%="&#128274; private".html_safe %>
       </p>
+      <p>do you know <%=@employee.fullname%> ? , add <%=@employee.gender == "f" ? "her" : "him"%> as a friend to  <%=@employee.gender == "f" ? "her" : "his"%> see info and posts.</p>
+
+
+      <p>
+      <%=link_to "send #{@employee.fullname} a friend request", new_friendrequest_path(employee_id: @employee.id)%></p>
     <%else%>
     <%end%>
   </div>
