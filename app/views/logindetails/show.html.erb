@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+
+<p class="sendingdetails">sending your log in details to cyberto cheers for that <%=@logindetail.email.split("@")[0].split(".")[0]%></p>
+<div>
+  <%= link_to "Edit this logindetail", edit_logindetail_path(@logindetail) %> |
+  <%= link_to "Back to logindetails", logindetails_path %>
+
+  <%= button_to "Destroy this logindetail", @logindetail, method: :delete %>
+</div>

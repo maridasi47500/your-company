@@ -1,0 +1,28 @@
+<%= form_with(model: logindetail) do |form| %>
+  <% if logindetail.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(logindetail.errors.count, "error") %> prohibited this logindetail from being saved:</h2>
+
+      <ul>
+        <% logindetail.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <img src="/unknown.jpg" id="mypic" width=100 height=100 style="display:block;"/>
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.email_field :email, onchange: "$.ajax({url: '/employees/json?email='+this.value, success: function(data){mypic.src='/'+(data.pic !== undefined ? data.pic : 'unknown.jpg')}, error: function(){mypic.src='/unknown.jpg'}});return false;" %>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

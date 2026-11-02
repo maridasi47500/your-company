@@ -1,6 +1,10 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[ show edit update destroy mypage mypagelikeafriendcansee mypageasloggedin mypagelikeinfoisprivate]
 
+  def json
+    x=Employee.find_by("email" => params[:email])
+    render json: (x ? x : {}), layout: false
+  end
   def mypagelikeafriendcansee
     render :mypage
   end
@@ -19,6 +23,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1 or /employees/1.json
   def show
+
   end
 
   # GET /employees/new
@@ -72,6 +77,7 @@ class EmployeesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params.expect(:id))
+      @post=Post.new(employee: @employee)
     end
 
     # Only allow a list of trusted parameters through.

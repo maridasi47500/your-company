@@ -28,6 +28,14 @@
   <div id="right">
     <p> posts |  likes | comments</p>
     <%if params[:action] == "mypageasloggedin"%>
+
+<%= render "posts/form", post: @post %>
+<%= render @employee.posts.order(id: :desc).first(5) %>
+
+
+    <%elsif params[:action] == "mypagelikeafriendcansee" or params[:action] == "youare"%>
+      
+<%= render @employee.posts.order(id: :desc).first(5) %>
     <%elsif params[:action] == "mypagelikeinfoisprivate"%>
       <p>
       <%="&#128274; private".html_safe %>

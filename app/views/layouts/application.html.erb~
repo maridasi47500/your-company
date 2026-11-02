@@ -29,7 +29,7 @@
 
     | <%=link_to "all emails", emails_path%>
     | <%=link_to "welcome", root_path%>
-  | <%=form_with url: search_simple_path do |f|%>
+  | <%=form_with method: :get, url: search_simple_path do |f|%>
   <%=f.search_field :s%>
   <%=f.submit "simple search"%>
 <%end%>

@@ -28,6 +28,13 @@
   <div id="right">
     <p> posts |  likes | comments</p>
     <%if params[:action] == "mypageasloggedin"%>
+
+<%= render "posts/form", post: @post %>
+<%= render @employee.posts.order(id: :desc).first(5) %>
+
+
+    <%elsif params[:action] == "mypagelikeafriendcansee"%>
+<%= render @employee.posts.order(id: :desc).first(5) %>
     <%elsif params[:action] == "mypagelikeinfoisprivate"%>
       <p>
       <%="&#128274; private".html_safe %>
@@ -36,7 +43,7 @@
 
 
       <p>
-      send <%=@employee.fullname%> a friend request</p>
+      <%=link_to "send #{@employee.fullname} a friend request", new_friendrequest_path(employee_id: @employee.id)%></p>
     <%else%>
     <%end%>
   </div>

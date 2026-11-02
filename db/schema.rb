@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_02_025302) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_02_185341) do
   create_table "blindcarboncopies", force: :cascade do |t|
     t.integer "email_id", null: false
     t.integer "employee_id", null: false
@@ -70,10 +70,27 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_02_025302) do
     t.index ["employee_id"], name: "index_friendrequests_on_employee_id"
   end
 
+  create_table "logindetails", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.text "content"
+    t.string "pic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_posts_on_employee_id"
+  end
+
   add_foreign_key "blindcarboncopies", "emails"
   add_foreign_key "blindcarboncopies", "employees"
   add_foreign_key "carboncopies", "emails"
   add_foreign_key "carboncopies", "employees"
   add_foreign_key "employeefriends", "employees"
   add_foreign_key "friendrequests", "employees"
+  add_foreign_key "posts", "employees"
 end

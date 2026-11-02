@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  resources :logindetails do
+
+  end
+  resources :posts
   resources :friendrequests
   get "search/simple"
   resources :emails
   resources :employees do
+    collection do
+    get 'json'
+    end
 
 
     member do

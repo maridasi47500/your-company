@@ -1,0 +1,22 @@
+<div id="<%= dom_id post %>">
+<div class="chip">
+  <img src="/uploads/<%= post.employee.pic %>" alt="Person" width="96" height="96">
+  <%=post.employee.fullname%>
+</div>
+  
+
+  <div>
+    <%= I18n.l(post.created_at, format: :short) %>
+  </div>
+  <div>
+    <%= simple_format(post.content) %>
+  </div>
+
+  <% if post.pic.to_s.length > 0 %>
+  <div>
+    <strong>Pic:</strong>
+    <%= post.pic %>
+  </div>
+<% end %>
+
+</div>

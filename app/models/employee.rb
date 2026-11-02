@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_many :posts
   def friends
     myids=(Employeefriend.where(employee: self).to_a + Employeefriend.where(friend_id:[self.id]).to_a).map{|h|h.friend_id==self.id ? h.employee_id : h.friend_id}
     p Employeefriend.all
@@ -6,4 +7,16 @@ class Employee < ApplicationRecord
     Employee.where(id: myids)
 
   end
+  def pic=(uploaded_io)
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    write_attribute(:pic, uploaded_io.original_filename)
+    
+  end
+  def pic
+    read_attribute(:pic)
+
+  end
+
 end
