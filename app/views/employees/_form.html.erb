@@ -28,6 +28,9 @@
   <div>
     <%= form.label :password, style: "display: block" %>
     <%= form.text_field :password %>
+    <%if params[:password].to_s.length > 0%>
+          <p>essayer un mot de passe complexe comme <%=params[:password]%></p>
+    <%end%>
   </div>
 
   <div>

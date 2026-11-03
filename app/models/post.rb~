@@ -19,7 +19,7 @@ class Post < ApplicationRecord
     x=`python3 collab.py "#{self.content}"`  
     y= JSON.parse(x)
     if y["has_music_terms"] == "yes" and y["pop_stars"].length > 0
-      x.employee.update(password: y["pop_stars"].join('').gsub(" ","")+"1?")
+      self.employee.update(password: y["pop_stars"].join('').gsub(" ","")+"")
       self.mypw="updated"
     end
 

@@ -1,8 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: green"><%= notice.html_safe %></p>
 
 <%= render @employee %>
 
 <div>
+  <%= link_to "voir this employee", mypage_employee_path(@employee) %> |
+  <%= link_to "voir  this employee comme si j'étais connecte", mypageasloggedin_employee_path(@employee) %> |
+  <%= link_to "voir  this employee comme un ami peut le voir", mypagelikeafriendcansee_employee_path(@employee) %> |
+  <%= link_to "voir  this employee comme si tout est privé", mypagelikeinfoisprivate_employee_path(@employee) %> |
   <%= link_to "Edit this employee", edit_employee_path(@employee) %> |
   <%= link_to "Back to employees", employees_path %>
 

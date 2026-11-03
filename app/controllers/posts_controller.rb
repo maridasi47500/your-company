@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'passgen'
+
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
@@ -25,8 +28,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        info = Passgen::analyze(@post.employee.password.to_s)
+        newpass=Passgen::generate(:digits => 5, :length => 12, :symbols => 3)
         
-        format.html { redirect_to mypageasloggedin_employee_path(@post.employee), notice: "Post was successfully created. #{@post.mypw == "updated" ? "votre mot de passe a été modifié." : ""}" }
+        format.html { redirect_to mypageasloggedin_employee_path(@post.employee), notice: "Post was successfully created. #{@post.mypw && @post.mypw == "updated" ? "votre mot de passe a été modifié.#{@post.employee.fullname}'s password's complexity is #{info.complexity} and has a score of #{info.score}/100, mais est lié à des infos perso . change le mot de pass avec un mot de passe plus complexe comme #{newpass}" : ""}." }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_content }
