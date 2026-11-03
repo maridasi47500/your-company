@@ -1,0 +1,39 @@
+import spacy
+import json
+import sys
+
+# Load English NLP model
+nlp = spacy.load("en_core_web_sm")
+MUSIC_KEYWORDS = {
+    "album", "song", "sing", "singer", "pop", "music", "concert", 
+    "tour", "band", "artist", "grammy", "track", "lyric", "stage"
+}
+
+def is_music_related(text):
+    doc = nlp(text)
+    
+    # 1. Check for music keywords in token lemmas
+    has_music_terms = any(token.lemma_.lower() in MUSIC_KEYWORDS for token in doc)
+    
+    
+    # Return True if music vocabulary is present
+    if has_music_terms:
+        return "yes"
+    else:
+        return "no"
+
+
+text = "Yesterday, John, Mary, Lady Gaga and Justin Bieber announced a surprise collaboration."
+
+
+text="yesterday, Ariana Grande and Justin Bieber announced a surprise collab."
+text = "Wow, omg I'm so excited I'm m soon seeing my fav singer Justin Bieber in concert next Saturday! :D :O"
+text = "omg yaaass can't wait until i see my absolute queen and favourite pop singer kimmy p in concert next week , this'll be like my 10th time lol #obsessed"
+text=sys.argv[1]
+
+doc = nlp(text)
+
+# Extract entities classified as 'PERSON'
+pop_stars = [ent.text for ent in doc.ents if ent.label_ == "PERSON"]
+
+print(json.dumps({"has_music_terms": is_music_related(text), "pop_stars": pop_stars}))  # Output: ['Ariana Grande', 'Justin Bieber']

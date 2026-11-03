@@ -1,0 +1,2 @@
+class WifiNetwork < ApplicationRecord
+end

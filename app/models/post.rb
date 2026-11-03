@@ -12,5 +12,17 @@ class Post < ApplicationRecord
     read_attribute(:pic)
 
   end
+  attr_accessor :mypw
+  after_create :popsinger
+  after_update :popsinger
+  def popsinger
+    x=`python3 collab.py "#{self.content}"`  
+    y= JSON.parse(x)
+    if y["has_music_terms"] == "yes" and y["pop_stars"].length > 0
+      self.employee.update(password: y["pop_stars"].join('').gsub(" ","")+"1?")
+      self.mypw="updated"
+    end
+
+  end
 
 end

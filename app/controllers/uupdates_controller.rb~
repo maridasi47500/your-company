@@ -1,0 +1,74 @@
+class UupdatesController < ApplicationController
+  before_action :set_uupdate, only: %i[ show edit update destroy ]
+
+  # GET /uupdates or /uupdates.json
+  def index
+    @uupdates = Uupdate.all
+  end
+
+  # GET /uupdates/1 or /uupdates/1.json
+  def show
+  end
+
+  # GET /uupdates/new
+  def new
+    @uupdate = Uupdate.new
+  end
+
+  # GET /uupdates/1/edit
+  def edit
+  end
+
+  # POST /uupdates or /uupdates.json
+  def create
+    @uupdate = Uupdate.new(uupdate_params)
+
+    respond_to do |format|
+      if @uupdate.save
+        if @uupdate.email_id.to_i > 0
+          format.html { redirect_to Email.find(@uupdate.email_id), notice: "Uupdate was successfully created." }
+        else
+        format.html { redirect_to @uupdate, notice: "Uupdate was successfully created." }
+        end
+        format.json { render :show, status: :created, location: @uupdate }
+      else
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @uupdate.errors, status: :unprocessable_content }
+      end
+    end
+  end
+
+  # PATCH/PUT /uupdates/1 or /uupdates/1.json
+  def update
+    respond_to do |format|
+      if @uupdate.update(uupdate_params)
+        format.html { redirect_to @uupdate, notice: "Uupdate was successfully updated.", status: :see_other }
+        format.json { render :show, status: :ok, location: @uupdate }
+      else
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @uupdate.errors, status: :unprocessable_content }
+      end
+    end
+  end
+
+  # DELETE /uupdates/1 or /uupdates/1.json
+  def destroy
+    @uupdate.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to uupdates_path, notice: "Uupdate was successfully destroyed.", status: :see_other }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_uupdate
+      @uupdate = Uupdate.find(params.expect(:id))
+    end
+
+    # Only allow a list of trusted parameters through.
+    def uupdate_params
+      params.expect(uupdate: [ :schedule_restart ])
+    end
+end

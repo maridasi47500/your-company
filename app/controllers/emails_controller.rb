@@ -7,7 +7,22 @@ class EmailsController < ApplicationController
   end
 
   # GET /emails/1 or /emails/1.json
+  def antivirus
+    session[:antivirus] = params[:myvalue].to_i
+  end
+  def wifi
+    @x={}
+    session[:wifi]=params[:myid].to_i
+    render json: @x, layout: false
+  end
+  def download
+    @x={}
+    render json: @x, layout: false
+  end
   def show
+    @uupdate=Uupdate.new
+    @uupdate.email_id=@email.id
+    @uupdate.schedulenow=1
   end
 
   # GET /emails/new

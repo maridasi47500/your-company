@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @uupdate %>
+
+<div>
+  <%= link_to "Edit this uupdate", edit_uupdate_path(@uupdate) %> |
+  <%= link_to "Back to uupdates", uupdates_path %>
+
+  <%= button_to "Destroy this uupdate", @uupdate, method: :delete %>
+</div>

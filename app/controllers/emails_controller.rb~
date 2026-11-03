@@ -7,7 +7,21 @@ class EmailsController < ApplicationController
   end
 
   # GET /emails/1 or /emails/1.json
+  def antivirus
+    session[:antivirus] = params[:myvalue].to_i
+  end
+  def wifi
+    @x={}
+    render json: @x, layout: false
+  end
+  def download
+    @x={}
+    render json: @x, layout: false
+  end
   def show
+    @uupdate=Uupdate.new
+    @uupdate.email_id=@email.id
+    @uupdate.schedulenow=1
   end
 
   # GET /emails/new
@@ -18,10 +32,10 @@ class EmailsController < ApplicationController
   # GET /emails/1/edit
   def edit
     if params[:bcc]=="true"
-      @email.bccemployees=Employee.all
+      @email.bccemployee_ids=Employee.all.ids
     end
     if params[:cc]=="true"
-      @email.ccemployees=Employee.all
+      @email.ccemployee_ids=Employee.all.ids
     end
   end
 

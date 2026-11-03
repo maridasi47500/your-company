@@ -22,9 +22,12 @@
     <%= simple_format(email.content) %>
   </div>
 
+    <%if email.attachment.to_s.length > 0 %>
   <div>
     <strong>&#128206; Attachment:</strong>
     <%= email.attachment %>
+    <a href="<%=email.attachment%>" class="download">download</a>
   </div>
+  <% end %>
 
 </div>

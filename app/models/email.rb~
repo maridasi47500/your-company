@@ -10,6 +10,8 @@ class Email < ApplicationRecord
   end
   has_many :carboncopies
   has_many :ccemployees, through: :carboncopies, source: :employee
-  has_many :bccemployees, :join_table => :blindcarboncopies, through: :employee
+  has_many :blindcarboncopies
+  has_many :bccemployees, :through => :blindcarboncopies, source: :employee
+  has_and_belongs_to_many :uupdates, :join_table => :uupdatehasemails
 
 end

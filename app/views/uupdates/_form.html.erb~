@@ -1,0 +1,33 @@
+<%= form_with(model: uupdate, html: {id: "myfavform"}) do |form| %>
+  <% if uupdate.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(uupdate.errors.count, "error") %> prohibited this uupdate from being saved:</h2>
+
+      <ul>
+        <% uupdate.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+il y a de nouvelles ubook updates available. your device needs to restart to install updates , restart now, schedule restart 10 minutes, cancel or confirm, tu fais cancel
+
+  
+  </p>
+
+  <div>
+    <%= form.label :schedulenow, "restart now", style: "display: block" %>
+    <%= form.check_box :schedulenow %>
+  </div>
+  <div>
+    <%= form.hidden_field :email_id %>
+    <%= form.label :schedule_restart, style: "display: block" %>
+    <%= form.select :myschedule, ["10 minutes", "1 hour", "2 hours", "1 day"] %>
+  </div>
+
+  <a href="" onclick="myfavform.outerHTML='';return false;">cancel</a>
+  <div>
+    <%= form.submit "confirm" %>
+  </div>
+<% end %>

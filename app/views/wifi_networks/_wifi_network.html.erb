@@ -1,0 +1,20 @@
+<div id="<%= dom_id wifi_network %>">
+  <div>
+
+<strong>
+ &#128732; <%= wifi_network.password.length > 0 ? "SECURED WIFI NETWORK" : "OPEN FREE WIFI" %>
+
+</strong>
+    <%= wifi_network.ssid %>
+  </div>
+
+
+  <div>
+    <strong>Firmware updates:</strong>
+    <%= wifi_network.firmware_updates ? "&#9745;".html_safe : "" %>
+  </div>
+  <div>
+    <a href="" onclick="$.ajax({url: '/emails/wifi?myid=<%=wifi_network.id%>', success:function(data){window.location.reload();}});return false;">selectionner ce reseau</a>
+  </div>
+
+</div>

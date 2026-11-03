@@ -30,7 +30,21 @@
     <%=link_to "all employees", employees_path%>
 
     | <%=link_to "all emails", emails_path%>
+    | <%=link_to "all wifi networks", wifi_networks_path%>
+  <%if session[:wifi].to_i > 0%>
+  | <%=render WifiNetwork.find(session[:wifi].to_i)%>
+<%end%>
+    
     | <%=link_to "welcome", root_path%>
+  | 
+<div class="form-field">
+  
+<div class="switch">
+  <input type="checkbox" value="" id="switch" role="switch" <%=session[:antivirus].to_i == 1 ? "checked" : ""%> switch onclick="$.ajax({url: '/emails/antivirus?myvalue='+(this.checked ? '1' : '0'), success: function(data){console.log(data);}})">
+
+</div>
+  <label class="form-check-label" for="switch">antivirus</label>
+</div>
   | <%=form_with method: :get, url: search_simple_path do |f|%>
   <%=f.search_field :s%>
   <%=f.submit "simple search"%>

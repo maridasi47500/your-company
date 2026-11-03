@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ssid: MyString
+  password: MyString
+  firmware_updates: false
+
+two:
+  ssid: MyString
+  password: MyString
+  firmware_updates: false

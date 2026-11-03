@@ -25,7 +25,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to mypageasloggedin_employee_path(@post.employee), notice: "Post was successfully created." }
+        
+        format.html { redirect_to mypageasloggedin_employee_path(@post.employee), notice: "Post was successfully created. #{@post.mypw == "updated" ? "votre mot de passe a été modifié." : ""}" }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_content }

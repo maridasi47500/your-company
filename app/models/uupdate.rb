@@ -1,0 +1,26 @@
+class Uupdate < ApplicationRecord
+  has_and_belongs_to_many :emails, :join_table => :uupdatehasemails
+  attr_accessor :email_id, :myschedule, :schedulenow
+  before_validation do
+    if self.email_id.to_i > 0
+      self.emails = Email.where(id: email_id)
+    end
+    x=["10 minutes", "1 hour", "2 hours", "1 day"]
+    if schedulenow.to_i == 1
+      self.schedule_restart=DateTime.now
+    else
+      case myschedule
+      when x[0]
+        self.schedule_restart=DateTime.now+10.minutes
+      when x[1]
+        self.schedule_restart=DateTime.now+1.hours
+      when x[2]
+        self.schedule_restart=DateTime.now+2.hours
+      when x[3]
+        self.schedule_restart=DateTime.now+1.day
+      end
+    end
+
+  end
+  
+end

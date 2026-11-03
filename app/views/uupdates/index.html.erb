@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Uupdates" %>
+
+<h1>Uupdates</h1>
+
+<div id="uupdates">
+  <% @uupdates.each do |uupdate| %>
+    <%= render uupdate %>
+    <p>
+      <%= link_to "Show this uupdate", uupdate %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New uupdate", new_uupdate_path %>

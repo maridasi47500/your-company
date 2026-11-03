@@ -1,0 +1,12 @@
+<% content_for :title, "Editing wifi network" %>
+
+<h1>Editing wifi network</h1>
+
+<%= render "form", wifi_network: @wifi_network %>
+
+<br>
+
+<div>
+  <%= link_to "Show this wifi network", @wifi_network %> |
+  <%= link_to "Back to wifi networks", wifi_networks_path %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_02_185341) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_03_015411) do
   create_table "blindcarboncopies", force: :cascade do |t|
     t.integer "email_id", null: false
     t.integer "employee_id", null: false
@@ -86,6 +86,29 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_02_185341) do
     t.index ["employee_id"], name: "index_posts_on_employee_id"
   end
 
+  create_table "uupdatehasemails", force: :cascade do |t|
+    t.integer "email_id", null: false
+    t.integer "uupdate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_id"], name: "index_uupdatehasemails_on_email_id"
+    t.index ["uupdate_id"], name: "index_uupdatehasemails_on_uupdate_id"
+  end
+
+  create_table "uupdates", force: :cascade do |t|
+    t.datetime "schedule_restart"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wifi_networks", force: :cascade do |t|
+    t.string "ssid"
+    t.string "password"
+    t.boolean "firmware_updates"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "blindcarboncopies", "emails"
   add_foreign_key "blindcarboncopies", "employees"
   add_foreign_key "carboncopies", "emails"
@@ -93,4 +116,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_02_185341) do
   add_foreign_key "employeefriends", "employees"
   add_foreign_key "friendrequests", "employees"
   add_foreign_key "posts", "employees"
+  add_foreign_key "uupdatehasemails", "emails"
+  add_foreign_key "uupdatehasemails", "uupdates"
 end

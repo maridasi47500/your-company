@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+  resources :wifi_networks
+  resources :uupdates
   resources :logindetails do
 
   end
   resources :posts
   resources :friendrequests
   get "search/simple"
-  resources :emails
+  resources :emails do
+    collection do
+      get "antivirus"
+      get "download"
+      get "wifi"
+    end
+  end
   resources :employees do
     collection do
     get 'json'

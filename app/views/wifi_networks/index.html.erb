@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Wifi networks" %>
+
+<h1>Wifi networks</h1>
+
+<div id="wifi_networks">
+  <% @wifi_networks.each do |wifi_network| %>
+    <%= render wifi_network %>
+    <p>
+      <%= link_to "Show this wifi network", wifi_network %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New wifi network", new_wifi_network_path %>

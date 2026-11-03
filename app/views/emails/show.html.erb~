@@ -30,6 +30,19 @@
         alert(decodeURIComponent("%f0%9F%90%9B vous avez attrapé un malware "));
         return false;
       });
+      $(".download").click(function(){
+        <%@w=WifiNetwork.find(session[:wifi]) rescue false%>
+        <%@a=session[:antivirus].to_i == 1 rescue false%>
+          <%if @email.uupdates.length > 0 and @w and @w.password.to_s.length > 0 and @a%>
+        messageattachment.innerHTML="vous avez téléchargé toutes les mises à jour, activé l'antivirus et choisi un wifi sécurisé , vous pouvez telecharger la pièce jointe sans souci.";
+        
+      <%else%>
+            messageattachment.innerHTML=" vous pouvez telecharger la pièce jointe sans souci mais il se pourrait que cyberto accède à la pièce jointe aussi, comme vous n'avez pas téléchargé toutes les mises à jour, activé l'antivirus et choisi un wifi sécurisé avec un mot de passe,";
+          <%end%>
+          window.open("/uploads/<%=@email.attachment%>");
+        
+        return false;
+      });
     }
   </script>
 
@@ -37,14 +50,22 @@
   <button onclick="cybertodestinataire.style.display=(cybertodestinataire.style.display == 'none' ? 'block' : 'none');">envoyer le message aussi à cyberto en copie carbone</button>
   <button onclick="cybertonondestinataire.style.display=(cybertonondestinataire.style.display == 'none' ? 'block' : 'none');">envoyer le message pour ne pas laisser lire tous les destinataires à cyberto en copie carbone invisible</button>
 
-  <span id="cybertodestinataire">
-  <%= link_to "send this email to all employees (copie carbone simple)", edit_email_path(@email, cc: "true"), style: "display:none;" %> |
+  <span id="cybertodestinataire" style="display:none;">
+  <%= link_to "send this email to all employees (copie carbone simple)", edit_email_path(@email, cc: "true") %> |
   </span>
-  <span id="cybertonondestinataire">
-  <%= link_to "send this email to all employees (copie carbone invisible )", edit_email_path(@email, bcc: "true"), style: "display:none;" %> |
+  <span id="cybertonondestinataire" style="display:none;">
+  <%= link_to "send this email to all employees (copie carbone invisible )", edit_email_path(@email, bcc: "true") %> |
   </span>
 </div>
 <div>
+  <%if @email.uupdates.length == 0%>
+<h1>New updates available</h1>
+
+<%= render "uupdates/form", uupdate: @uupdate %>
+<%else%>
+  <p>vous avez installé toutes les mises à jour</p>
+<%end%>
+  
   <%= link_to "Edit this email", edit_email_path(@email) %> |
   <%= link_to "Back to emails", emails_path %>
 
