@@ -53,3 +53,7 @@ display:inline;}
 .sendingdetails {
 	font-size: 30px;
 }
+textarea {
+	width:100%;
+	min-height:100px;
+}

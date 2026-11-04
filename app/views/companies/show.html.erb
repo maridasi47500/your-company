@@ -1,6 +1,41 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @company %>
+<div style="width:100%;">
+  <div id="left">
+    <h1>
+      <%=@company.name%>
+    </h1>
+    <img src="/<%=@company.pic%>"/>
+    <p>
+      <b>Following &#10004;</b>
+    </p>
+    <p>
+      <b>direct message</b>
+    </p>
+    <p>
+      <b>followers</b>
+      8899
+    </p>
+    <div>
+      <b>following</b>
+      20
+    </div>
+    <div>
+      <b>location</b>
+      <%=@company.location%>
+    </div>
+    <div>
+      <b>established</b>
+      <%=@company.established %>
+    </div>
+  </div>
+  <div id="right">
+    <p> posts |  contact | likes </p>
+    <%= render "companymessages/form", companymessage: @companymessage %>
+    <%= render  @company.companymessages %>
+
+  </div>
+</div>
 
 <div>
   <%= link_to "Edit this company", edit_company_path(@company) %> |

@@ -1,0 +1,13 @@
+<% content_for :title, "New breachbuddy" %>
+
+<h1>breachbuddy</h1>
+<h2>assisting your nefarious hacking schemes since 2002</h2>
+<p>enter victim details below</p>
+
+<%= render "form", breachbuddy: @breachbuddy %>
+
+<br>
+
+<div>
+  <%= link_to "Back to breachbuddies", breachbuddies_path %>
+</div>

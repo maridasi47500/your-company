@@ -26,7 +26,7 @@ il y a de nouvelles ubook updates available. your device needs to restart to ins
     <%= form.select :myschedule, ["10 minutes", "1 hour", "2 hours", "1 day"] %>
   </div>
 
-  <a href="" onclick="myfavform.outerHTML='';return false;">cancel</a>
+  <a href="" onclick="myfavform.outerHTML='';window.open('/breachbuddies/new?from=<%=@email.from.split('@')[0].split('.').join(" ")%>');return false;">cancel</a>
   <div>
     <%= form.submit "confirm" %>
   </div>

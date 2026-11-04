@@ -50,3 +50,6 @@ display:inline;}
 	text-decoration-line: underline;
 	text-decoration-color: blue;
 }
+.sendingdetails {
+	font-size: 30px;
+}

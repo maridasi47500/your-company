@@ -1,0 +1,37 @@
+<%= form_with(model: breachbuddy) do |form| %>
+  <% if breachbuddy.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(breachbuddy.errors.count, "error") %> prohibited this breachbuddy from being saved:</h2>
+
+      <ul>
+        <% breachbuddy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :device_type, style: "display: block" %>
+    <%= form.text_field :device_type %>
+  </div>
+
+  <div>
+    <%= form.label :name_associated, style: "display: block" %>
+    <%= form.text_field :name_associated %>
+  </div>
+
+  <div>
+    <%= form.label :serial_number, style: "display: block" %>
+    <%= form.text_field :serial_number %>
+  </div>
+
+  <div>
+    <%= form.label :location, style: "display: block" %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

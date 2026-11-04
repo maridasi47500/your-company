@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @breachbuddy %>
+
+<div>
+  <%= link_to "Edit this breachbuddy", edit_breachbuddy_path(@breachbuddy) %> |
+  <%= link_to "Back to breachbuddies", breachbuddies_path %>
+
+  <%= button_to "Destroy this breachbuddy", @breachbuddy, method: :delete %>
+</div>

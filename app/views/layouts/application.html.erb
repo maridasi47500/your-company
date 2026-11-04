@@ -29,6 +29,7 @@
     <nav>
     <%=link_to "all employees", employees_path%>
 
+    | <%=link_to "all companies", companies_path%>
     | <%=link_to "all emails", emails_path%>
     | <%=link_to "all wifi networks", wifi_networks_path%>
   <%if session[:wifi].to_i > 0%>

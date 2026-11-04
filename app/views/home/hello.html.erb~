@@ -1,5 +1,18 @@
-<h1>Home#hello</h1>
-<p>Find me in app/views/home/hello.html.erb</p>
+<h1>bienvenue à your company</h1>
+<p>imagine que tu es au téléphone, écris le brouillon de ta conversation avec la banque .  prépare ce que tu vas dire si la banque t'appelle pour te dire qu'il y a des irrégularités avec ton compte, par exemple si la banque te demande nom complet, adresse, et numéro de banque prépare les informations ici.</p>
+
+<textarea id="phonetalk">
+  </textarea>
+<div id="cyberappel" style="display:none;">
+  <img src="/joconde.jpg" />
+  tu dois pas donner les informations personnelles par téléphone, sinon tu risques un vol d"informations ou un piratage de tes propres données ou les données de l'entreprise. 
+</div>
+<p>
+DISCOUNT 4 YOU Scanner le Qr code
+</p>
+  <img src="/quishing.jpg" />
+<a href="" onclick="mycontent.style.display='block';return false;">afficher tout ce qu'il y a dans yourcompany</a>
+<div id="mycontent" style="display:none;">
 <p>josie.jacobs@urcompany.com</p>
 <p>liaM.killen@urcompany.com</p>
 <p>inbox starred snoozed important sent drafts</p>
@@ -80,5 +93,9 @@ email workless , limitd time offer, ai writing assistant , speed up your writing
 <p>
  workless ,  ai writing assistant , speed up your writing by 100%, limited te offer applied, was 250€ now free hurry offer expires in 5 minutes download now reviews 1 global review lifechangeing and certainly not a scam, cyberto vole des documents privés et des photo perso
 </p>
+<hr>
+<p>
+cyberto est la joconde avec comme un roi et beaucoup d'argent/il a le tableau joconde. comme rob a donné son numéro de carte bancaire par telephone nom complet 
+</p>
 
-
+</div>

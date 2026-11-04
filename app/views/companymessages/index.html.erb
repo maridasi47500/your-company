@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Companymessages" %>
+
+<h1>Companymessages</h1>
+
+<div id="companymessages">
+  <% @companymessages.each do |companymessage| %>
+    <%= render companymessage %>
+    <p>
+      <%= link_to "Show this companymessage", companymessage %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New companymessage", new_companymessage_path %>

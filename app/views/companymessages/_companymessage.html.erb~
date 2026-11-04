@@ -1,0 +1,20 @@
+<div id="<%= dom_id companymessage %>">
+
+  <div>
+    <strong>Message de</strong>
+    <%= companymessage.employee.name  %> 
+    <%= I18n.l(companymessage.created_at, format: :short) %> 
+  </div>
+
+  <div>
+    <%= simple_format(companymessage.content) %>
+  </div>
+
+  <%if companymessage.pic.to_s.length > 0 %>
+  <div>
+    <strong>Pic:</strong>
+    <img src="/uploads/<%= companymessage.pic %>" />
+  </div>
+<%end%>
+
+</div>

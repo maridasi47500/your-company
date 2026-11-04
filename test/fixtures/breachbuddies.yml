@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  device_type: MyString
+  name_associated: MyString
+  serial_number: MyString
+  location: MyString
+
+two:
+  device_type: MyString
+  name_associated: MyString
+  serial_number: MyString
+  location: MyString

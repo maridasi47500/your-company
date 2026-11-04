@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :breachbuddies
+  resources :companymessages
   resources :companies
   resources :wifi_networks
   resources :uupdates

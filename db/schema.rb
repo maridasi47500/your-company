@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_03_015411) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_04_020505) do
   create_table "blindcarboncopies", force: :cascade do |t|
     t.integer "email_id", null: false
     t.integer "employee_id", null: false
@@ -20,6 +20,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_015411) do
     t.index ["employee_id"], name: "index_blindcarboncopies_on_employee_id"
   end
 
+  create_table "breachbuddies", force: :cascade do |t|
+    t.string "device_type"
+    t.string "name_associated"
+    t.string "serial_number"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "carboncopies", force: :cascade do |t|
     t.integer "email_id", null: false
     t.integer "employee_id", null: false
@@ -27,6 +36,27 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_015411) do
     t.datetime "updated_at", null: false
     t.index ["email_id"], name: "index_carboncopies_on_email_id"
     t.index ["employee_id"], name: "index_carboncopies_on_employee_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "established"
+    t.string "pic"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companymessages", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.integer "employee_id", null: false
+    t.string "content"
+    t.string "pic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_companymessages_on_company_id"
+    t.index ["employee_id"], name: "index_companymessages_on_employee_id"
   end
 
   create_table "emails", force: :cascade do |t|
@@ -113,6 +143,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_015411) do
   add_foreign_key "blindcarboncopies", "employees"
   add_foreign_key "carboncopies", "emails"
   add_foreign_key "carboncopies", "employees"
+  add_foreign_key "companymessages", "companies"
+  add_foreign_key "companymessages", "employees"
   add_foreign_key "employeefriends", "employees"
   add_foreign_key "friendrequests", "employees"
   add_foreign_key "posts", "employees"

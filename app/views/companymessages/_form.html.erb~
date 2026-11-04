@@ -1,0 +1,36 @@
+<%= form_with(model: companymessage) do |form| %>
+  <% if companymessage.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(companymessage.errors.count, "error") %> prohibited this companymessage from being saved:</h2>
+
+      <ul>
+        <% companymessage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.hidden_field :company_id %>
+  </div>
+
+  <div>
+    <%= form.label :employee_id, "Qui es-tu ?", style: "display: block" %>
+    <%= form.collection_select :employee_id, Employee.all, :id, :fullname %>
+  </div>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div>
+    <%= form.label :pic, style: "display: block" %>
+    <%= form.file_field :pic %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

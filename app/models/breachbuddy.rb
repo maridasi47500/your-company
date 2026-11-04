@@ -1,0 +1,2 @@
+class Breachbuddy < ApplicationRecord
+end
