@@ -10,8 +10,15 @@ class EmailsController < ApplicationController
   def antivirus
     session[:antivirus] = params[:myvalue].to_i
   end
+  def vishing
+    x=params[:mytext]
+    k=JSON.parse(`python3 vish.py "#{x}"`)
+    k["personal_data"]=(k["adresses_lieux"].length > 0 or k["cartes_bancaires"].length > 0 or k["noms"].length > 0) ? "1" : "0"
+    render layout: false, json: k
+  end
   def wifi
     @x={}
+    session[:wifi]=params[:myid].to_i
     render json: @x, layout: false
   end
   def download

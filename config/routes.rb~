@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :breachbuddies
+  resources :companymessages
+  resources :companies
   resources :wifi_networks
   resources :uupdates
   resources :logindetails do
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       get "antivirus"
       get "download"
+      get "wifi"
     end
   end
   resources :employees do

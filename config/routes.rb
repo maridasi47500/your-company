@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "search/simple"
   resources :emails do
     collection do
+      get "vishing"
       get "antivirus"
       get "download"
       get "wifi"

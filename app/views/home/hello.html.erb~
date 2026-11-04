@@ -3,12 +3,13 @@
 
 <textarea id="phonetalk">
   </textarea>
+  <a href="" onclick="$.ajax({url: '/emails/vishing?mytext='+phonetalk.value, success: function(data){cyberappel.style.display = (data.personal_data == '1' ? 'block' : 'none');}});return false;">vérifier si ce sont les bonnes informations</a>
 <div id="cyberappel" style="display:none;">
   <img src="/joconde.jpg" />
   tu dois pas donner les informations personnelles par téléphone, sinon tu risques un vol d"informations ou un piratage de tes propres données ou les données de l'entreprise. 
 </div>
 <p>
-DISCOUNT 4 YOU Scanner le Qr code
+DISCOUNT 4 YOU Scanner le Qr code :
 </p>
   <img src="/quishing.jpg" />
 <a href="" onclick="mycontent.style.display='block';return false;">afficher tout ce qu'il y a dans yourcompany</a>
